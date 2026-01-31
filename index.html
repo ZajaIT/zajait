@@ -396,8 +396,11 @@ input[type="submit"] {
     font-family: inherit;
 }
 
-.contact-form input,
-.contact-form textarea {
+.contact-form input.filled,
+.contact-form textarea.filled {
+    background-color: #ffffff !important;
+    color: #111111 !important;
+}
     width: 100%;
     padding: 12px 15px;
     margin-bottom: 15px;
@@ -685,18 +688,18 @@ const fields = form.querySelectorAll("input, textarea");
 fields.forEach(field => {
 
     function checkField() {
-        if (field.value && field.value.trim().length > 0) {
-            field.classList.add("filled");
-        } else {
-            field.classList.remove("filled");
-        }
+    if (this.value.length > 0) {
+        this.classList.add("filled");
+    } else {
+        this.classList.remove("filled");
     }
-
+}
     field.addEventListener("input", checkField);
     field.addEventListener("change", checkField);
 
+
     // Kontrola při načtení (autofill)
-    setTimeout(checkField, 500);
+    setTimeout(checkField.bind(field), 500);
 });
     
 form.addEventListener("submit", function(e) {
@@ -755,6 +758,7 @@ form.addEventListener("submit", function(e) {
     
 </body>
 </html>
+
 
 
 
