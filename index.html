@@ -937,9 +937,37 @@ form.addEventListener("submit", function(e) {
         method: "POST",
         body: data,
         headers
-    
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const fields = document.querySelectorAll(
+        ".contact-form input, .contact-form textarea"
+    );
+
+    fields.forEach(field => {
+
+        // při psaní
+        field.addEventListener("input", () => {
+            if (field.value.trim() !== "") {
+                field.classList.add("filled");
+            } else {
+                field.classList.remove("filled");
+            }
+        });
+
+        // pro reload/autofill
+        if (field.value.trim() !== "") {
+            field.classList.add("filled");
+        }
+
+    });
+
+});
+</script>
+
 </body>
 </html>
+
 
 
 
