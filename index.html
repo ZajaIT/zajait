@@ -824,37 +824,40 @@ revealOnScroll();
 const form = document.getElementById("contactForm");
 const errorBox = document.getElementById("formError");
 
-// Pole formuláře
 const fields = form.querySelectorAll("input, textarea");
-const textarea = form.querySelector("textarea");
 
-// Auto-resize textarea
-function autoResize() {
-    this.style.height = "auto";
-    this.style.height = this.scrollHeight + "px";
+// ===== FILLED STATE =====
+
+function updateFilled() {
+    fields.forEach(field => {
+        if (field.value.trim() !== "") {
+            field.classList.add("filled");
+        } else {
+            field.classList.remove("filled");
+        }
+    });
 }
 
-textarea.addEventListener("input", autoResize);
-
-// Vyplněné pole = efekt
+// Sleduj psaní i změny
 fields.forEach(field => {
-
-    function checkField() {
-        if (this.value.length > 0) {
-            this.classList.add("filled");
-        } else {
-            this.classList.remove("filled");
-        }
-    }
-
-    field.addEventListener("input", checkField);
-    field.addEventListener("change", checkField);
-
-    // kontrola autofillu
-    setTimeout(checkField.bind(field), 500);
+    field.addEventListener("input", updateFilled);
+    field.addEventListener("change", updateFilled);
 });
 
-// Odeslání formuláře
+// Spust při načtení (autofill)
+window.addEventListener("load", updateFilled);
+
+// ===== AUTO RESIZE TEXTAREA =====
+
+const textarea = form.querySelector("textarea");
+
+textarea.addEventListener("input", function () {
+    this.style.height = "auto";
+    this.style.height = this.scrollHeight + "px";
+});
+
+// ===== ODESLÁNÍ FORMULÁŘE =====
+
 form.addEventListener("submit", function(e) {
     e.preventDefault();
 
@@ -887,29 +890,11 @@ form.addEventListener("submit", function(e) {
     fetch(form.action, {
         method: "POST",
         body: data,
-        headers: {
-            "Accept": "application/json"
-        }
-    })
-    .then(response => {
-        if (response.ok) {
-            window.location.href = "https://zajait.github.io/zajait/thankyou.html";
-        } else {
-            errorBox.textContent = "Prosím vyplňte správný formát emailu.";
-            errorBox.style.display = "block";
-        }
-    })
-    .catch(() => {
-        errorBox.textContent = "Chyba připojení.";
-        errorBox.style.display = "block";
-    });
-});
-</script>
-
-
+        headers
     
 </body>
 </html>
+
 
 
 
