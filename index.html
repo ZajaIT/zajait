@@ -886,8 +886,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("contactForm");
     const errorBox = document.getElementById("formError");
 
-    if (!form) return;
-
     const fields = form.querySelectorAll("input, textarea");
 
     // ===== FILLED STATE =====
@@ -911,16 +909,15 @@ document.addEventListener("DOMContentLoaded", function () {
     // ===== AUTO RESIZE TEXTAREA =====
     const textarea = form.querySelector("textarea");
 
-    if (textarea) {
-        textarea.addEventListener("input", function () {
-            this.style.height = "auto";
-            this.style.height = this.scrollHeight + "px";
-        });
-    }
+    textarea.addEventListener("input", function () {
+        this.style.height = "auto";
+        this.style.height = this.scrollHeight + "px";
+    });
 
-    // ===== ODESLÁNÍ FORMULÁŘE =====
+    // ===== SUBMIT =====
     form.addEventListener("submit", function(e) {
-        
+        e.preventDefault();
+
         errorBox.style.display = "none";
         errorBox.textContent = "";
 
@@ -946,7 +943,25 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         const data = new FormData(form);
-       
+
+        fetch(form.action, {
+            method: "POST",
+            body: data,
+            headers: {
+                "Accept": "application/json"
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                window.location.href = "https://zajait.github.io/zajait/thankyou.html";
+            } else {
+                throw new Error("Chyba odeslání");
+            }
+        })
+        .catch(() => {
+            errorBox.textContent = "Nepodařilo se odeslat formulář. Zkuste to prosím později.";
+            errorBox.style.display = "block";
+        });
 
     });
 
@@ -956,6 +971,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 </body>
 </html>
+
 
 
 
