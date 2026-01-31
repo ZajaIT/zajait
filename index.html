@@ -490,87 +490,109 @@ textarea:-webkit-autofill {
 /* Vyplněné pole */
 
 
-    /* Styl formulářových polí – oprava layoutu */
+    /* ===== KONTAKTNÍ FORMULÁŘ – CLEAN ===== */
 
-.contact-form input,
-.contact-form textarea {
-    width: 100%;
-    padding: 14px 16px;
-    margin-bottom: 15px;
-    border-radius: 12px;
-    border: 1px solid rgba(255,47,214,0.4);
-    background: rgba(255,255,255,0.06);
-    color: white;
-    font-size: 1rem;
-    outline: none;
-    transition: 0.3s;
+.contact-form {
+    max-width: 520px;
+    margin: 40px auto 0;
+    text-align: center;
 }
 
-/* Focus efekt */
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-    border-color: #ff2fd6;
-    box-shadow: 0 0 10px rgba(255,47,214,0.5);
+.form-box {
+    padding: 35px 30px;
+    background: linear-gradient(
+        145deg,
+        rgba(255,47,214,0.08),
+        rgba(138,46,255,0.05)
+    );
+    border: 2px solid rgba(255, 47, 214, 0.6);
+    border-radius: 18px;
+    backdrop-filter: blur(12px);
 }
 
-/* Vyplněné = bílé */
-
-
-/* Autofill fix */
-
-input:-webkit-autofill,
-textarea:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 1000px white inset !important;
-    -webkit-text-fill-color: #111 !important;
-}
-
-        /* Textarea – zákaz ručního roztahování */
-
-.contact-form textarea {
-    resize: none;
-    overflow: hidden;
-    min-height: 120px;
-    transition: height 0.2s ease;
-
-}
-
-        /* ===== FLOATING LABEL – ZACHOVÁ DESIGN ===== */
+/* Field wrapper */
 
 .field {
     position: relative;
     margin-bottom: 22px;
 }
 
-/* Label = původní placeholder */
+/* Input / textarea */
 
-.field label {
+.contact-form .field input,
+.contact-form .field textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,47,214,0.4);
+    background: rgba(0,0,0,0.7);
+    color: #ffffff;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.25s;
+}
+
+/* Focus */
+
+.contact-form .field input:focus,
+.contact-form .field textarea:focus {
+    border-color: #ff2fd6;
+    box-shadow: 0 0 10px rgba(255,47,214,0.5);
+}
+
+/* Filled = white */
+
+.contact-form .field input.filled,
+.contact-form .field textarea.filled {
+    background: #ffffff;
+    color: #111111;
+    -webkit-text-fill-color: #111111;
+}
+
+/* Textarea */
+
+.contact-form textarea {
+    resize: none;
+    min-height: 120px;
+    overflow: hidden;
+}
+
+/* Label */
+
+.contact-form .field label {
     position: absolute;
     left: 18px;
     top: 50%;
     transform: translateY(-50%);
-    color: rgba(255,255,255,0.5);
+    color: rgba(255,255,255,0.55);
     font-size: 1rem;
     pointer-events: none;
-    transition: 0.25s ease;
-}
-
-/* Aktivní stav */
-
-.field input:focus + label,
-.field input:not(:placeholder-shown) + label,
-.field textarea:focus + label,
-.field textarea:not(:placeholder-shown) + label {
-
-    top: -12px;
-    left: 14px;
-
-    font-size: 0.75rem;
-    color: #ff2fd6;
-
-    background: #000;
+    transition: 0.25s;
+    background: transparent;
     padding: 0 6px;
 }
+
+/* Floating */
+
+.contact-form .field input:focus + label,
+.contact-form .field input:not(:placeholder-shown) + label,
+.contact-form .field textarea:focus + label,
+.contact-form .field textarea:not(:placeholder-shown) + label {
+    top: -12px;
+    left: 14px;
+    font-size: 0.75rem;
+    color: #ff2fd6;
+    background: #000;
+}
+
+/* Autofill */
+
+.contact-form input:-webkit-autofill,
+.contact-form textarea:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset !important;
+    -webkit-text-fill-color: #111 !important;
+}
+
 /* ===== FLOATING LABEL - IZOLACE ===== */
 
 .contact-form .field {
@@ -932,6 +954,7 @@ form.addEventListener("submit", function(e) {
     
 </body>
 </html>
+
 
 
 
