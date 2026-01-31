@@ -629,6 +629,34 @@ textarea:-webkit-autofill {
     background: #ffffff !important;
     color: #111 !important;
 }
+    /* =============================
+   KONTAKT FORM – OPRAVA STAVŮ
+   ============================= */
+
+/* Základ – tmavé pole */
+
+.contact-form .field input,
+.contact-form .field textarea {
+    background: rgba(0,0,0,0.7) !important;
+    color: #fff !important;
+}
+
+/* Vyplněné pole – bílé */
+
+.contact-form .field input.filled,
+.contact-form .field textarea.filled {
+    background: #ffffff !important;
+    color: #111111 !important;
+}
+
+/* Autofill */
+
+.contact-form input:-webkit-autofill,
+.contact-form textarea:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset !important;
+    -webkit-text-fill-color: #111 !important;
+}
+
     
     </style>
 </head>
@@ -887,6 +915,7 @@ form.addEventListener("submit", function(e) {
     
 </body>
 </html>
+
 
 
 
