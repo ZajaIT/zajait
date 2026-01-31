@@ -501,7 +501,46 @@ textarea:-webkit-autofill {
 .filled {
     background: rgba(255,255,255,0.12) !important;
 }
-        
+    /* Styl formulářových polí – oprava layoutu */
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 14px 16px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,47,214,0.4);
+    background: rgba(255,255,255,0.06);
+    color: white;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.3s;
+}
+
+/* Focus efekt */
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #ff2fd6;
+    box-shadow: 0 0 10px rgba(255,47,214,0.5);
+}
+
+/* Vyplněné = bílé */
+
+.contact-form input.filled,
+.contact-form textarea.filled {
+    background: #ffffff !important;
+    color: #111 !important;
+}
+
+/* Autofill fix */
+
+input:-webkit-autofill,
+textarea:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset !important;
+    -webkit-text-fill-color: #111 !important;
+}
+
     </style>
 </head>
 
@@ -758,6 +797,7 @@ form.addEventListener("submit", function(e) {
     
 </body>
 </html>
+
 
 
 
