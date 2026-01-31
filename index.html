@@ -541,6 +541,13 @@ textarea:-webkit-autofill {
     -webkit-text-fill-color: #111 !important;
 }
 
+        /* Textarea – zákaz ručního roztahování */
+
+.contact-form textarea {
+    resize: none;
+    min-height: 120px;
+    overflow: hidden;
+}
     </style>
 </head>
 
@@ -733,6 +740,15 @@ fields.forEach(field => {
         this.classList.remove("filled");
     }
 }
+    // Auto resize textarea
+
+const textarea = form.querySelector("textarea");
+
+textarea.addEventListener("input", function () {
+    this.style.height = "auto";
+    this.style.height = this.scrollHeight + "px";
+});
+
     field.addEventListener("input", checkField);
     field.addEventListener("change", checkField);
 
@@ -797,6 +813,7 @@ form.addEventListener("submit", function(e) {
     
 </body>
 </html>
+
 
 
 
