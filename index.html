@@ -593,29 +593,65 @@ textarea:-webkit-autofill {
     -webkit-text-fill-color: #111 !important;
 }
 
-/* ===== FLOATING LABEL - IZOLACE ===== */
+/* =============================
+   KONTAKT FORM – FINÁLNÍ OPRAVA
+   ============================= */
 
 .contact-form .field {
     position: relative;
     margin-bottom: 22px;
 }
 
+/* Input */
 
-/* Placeholder label */
+.contact-form .field input,
+.contact-form .field textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,47,214,0.4);
+
+    background: rgba(0,0,0,0.7);
+    color: #ffffff;
+
+    font-size: 1rem;
+    outline: none;
+    transition: 0.25s;
+}
+
+/* Focus */
+
+.contact-form .field input:focus,
+.contact-form .field textarea:focus {
+    border-color: #ff2fd6;
+    box-shadow: 0 0 10px rgba(255,47,214,0.5);
+}
+
+/* Vyplněné = bílé pole + černý text */
+
+.contact-form .field input.filled,
+.contact-form .field textarea.filled {
+    background: #ffffff !important;
+    color: #111111 !important;
+    -webkit-text-fill-color: #111111 !important;
+}
+
+/* Label */
 
 .contact-form .field label {
     position: absolute;
     left: 18px;
     top: 50%;
     transform: translateY(-50%);
+
     color: rgba(255,255,255,0.55);
     font-size: 1rem;
+
     pointer-events: none;
     transition: 0.25s ease;
-    z-index: 2;
 }
 
-/* Floating stav */
+/* Floating label */
 
 .contact-form .field input:focus + label,
 .contact-form .field input:not(:placeholder-shown) + label,
@@ -627,32 +663,16 @@ textarea:-webkit-autofill {
 
     font-size: 0.75rem;
     color: #ff2fd6;
-
-    /* ===== FILLED STATE – JEDINÁ VERZE ===== */
-
-.contact-form .field input.filled,
-.contact-form .field textarea.filled {
-    background: #ffffff !important;
-    color: #111 !important;
-}
-    /* =============================
-   KONTAKT FORM – OPRAVA STAVŮ
-   ============================= */
-
-/* Základ – tmavé pole */
-
-.contact-form .field input,
-.contact-form .field textarea {
-    background: rgba(0,0,0,0.7) !important;
-    color: #fff !important;
+    background: #000;
+    padding: 0 6px;
 }
 
-/* Vyplněné pole – bílé */
+/* Textarea */
 
-.contact-form .field input.filled,
-.contact-form .field textarea.filled {
-    background: #ffffff !important;
-    color: #111111 !important;
+.contact-form textarea {
+    resize: none;
+    min-height: 120px;
+    overflow: hidden;
 }
 
 /* Autofill */
@@ -662,40 +682,6 @@ textarea:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 1000px white inset !important;
     -webkit-text-fill-color: #111 !important;
 }
-/* =============================
-   KONTAKT FORM – FINÁL
-   ============================= */
-
-.contact-form .field input,
-.contact-form .field textarea {
-    background: rgba(0,0,0,0.7);
-    color: #ffffff;
-}
-
-.contact-form .field input.filled,
-.contact-form .field textarea.filled {
-    background: #ffffff;
-    color: #111111;
-}
-
-/* Autofill */
-
-.contact-form input:-webkit-autofill,
-.contact-form textarea:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 1000px white inset !important;
-    -webkit-text-fill-color: #111 !important;
-}
-/* =============================
-   FORCE FILLED COLORS
-   ============================= */
-
-.contact-form .field input.filled,
-.contact-form .field textarea.filled {
-    background: #ffffff !important;
-    color: #111111 !important;
-    -webkit-text-fill-color: #111111 !important;
-}
-
     
     </style>
 </head>
@@ -954,6 +940,7 @@ form.addEventListener("submit", function(e) {
     
 </body>
 </html>
+
 
 
 
