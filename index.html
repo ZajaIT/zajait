@@ -551,11 +551,12 @@ textarea:-webkit-autofill {
 
 }
 
-        /* ===== FLOATING LABEL - SPRÁVNÁ VERZE ===== */
+        /* ===== FLOATING LABEL - FINÁLNÍ FIX ===== */
 
 .field {
     position: relative;
-    margin-bottom: 28px;
+    margin-bottom: 32px;
+    padding-top: 12px; /* prostor pro label */
 }
 
 /* Input / textarea */
@@ -563,12 +564,12 @@ textarea:-webkit-autofill {
 .field input,
 .field textarea {
     width: 100%;
-    padding: 14px 16px;
+    padding: 16px 16px;
     font-size: 1rem;
     background: rgba(255,255,255,0.06);
 }
 
-/* Label – výchozí stav (uvnitř pole) */
+/* Label – výchozí stav (uvnitř) */
 
 .field label {
     position: absolute;
@@ -582,20 +583,22 @@ textarea:-webkit-autofill {
     background: transparent;
 }
 
-/* Aktivní stav – NAD POLI */
+/* Aktivní stav – OPRAVDU NAD RÁMEČKEM */
 
 .field input:focus + label,
 .field input:not(:placeholder-shown) + label,
 .field textarea:focus + label,
 .field textarea:not(:placeholder-shown) + label {
-    top: -10px;
-    left: 12px;
+    top: 0;
+    transform: translateY(-60%);
     font-size: 0.75rem;
     color: #ff2fd6;
+
     background: #0b0012;
-    padding: 0 6px;
-    transform: none;
+    padding: 0 8px;
+    border-radius: 4px;
 }
+
 
     </style>
 </head>
@@ -870,6 +873,7 @@ form.addEventListener("submit", function(e) {
     
 </body>
 </html>
+
 
 
 
