@@ -587,6 +587,47 @@ textarea:-webkit-autofill {
     background: #000;
     padding: 0 6px;
 }
+/* ===== FLOATING LABEL - IZOLACE ===== */
+
+.contact-form .field {
+    position: relative;
+    margin-bottom: 22px;
+}
+
+/* Reset jen pro floating */
+
+.contact-form .field input,
+.contact-form .field textarea {
+    padding: 14px 16px !important;
+    background: rgba(0,0,0,0.7) !important;
+}
+
+/* Placeholder label */
+
+.contact-form .field label {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255,255,255,0.55);
+    font-size: 1rem;
+    pointer-events: none;
+    transition: 0.25s ease;
+    z-index: 2;
+}
+
+/* Floating stav */
+
+.contact-form .field input:focus + label,
+.contact-form .field input:not(:placeholder-shown) + label,
+.contact-form .field textarea:focus + label,
+.contact-form .field textarea:not(:placeholder-shown) + label {
+
+    top: -12px;
+    left: 14px;
+
+    font-size: 0.75rem;
+    color: #ff2fd6;
 
 
     </style>
@@ -862,6 +903,7 @@ form.addEventListener("submit", function(e) {
     
 </body>
 </html>
+
 
 
 
