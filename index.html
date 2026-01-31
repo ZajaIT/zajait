@@ -547,9 +547,8 @@ textarea:-webkit-autofill {
     resize: none;
     overflow: hidden;
     min-height: 120px;
+    transition: height 0.2s ease;
 
-    /* TEST – extrémně pomalé */
-    transition: height 2s ease;
 }
 
     </style>
@@ -731,36 +730,37 @@ revealOnScroll();
 const form = document.getElementById("contactForm");
 const errorBox = document.getElementById("formError");
 
-// Sleduje vyplnění polí
-
+// Pole formuláře
 const fields = form.querySelectorAll("input, textarea");
+const textarea = form.querySelector("textarea");
 
+// Auto-resize textarea
+function autoResize() {
+    this.style.height = "auto";
+    this.style.height = this.scrollHeight + "px";
+}
+
+textarea.addEventListener("input", autoResize);
+
+// Vyplněné pole = efekt
 fields.forEach(field => {
 
     function checkField() {
-    if (this.value.length > 0) {
-        this.classList.add("filled");
-    } else {
-        this.classList.remove("filled");
+        if (this.value.length > 0) {
+            this.classList.add("filled");
+        } else {
+            this.classList.remove("filled");
+        }
     }
-}
-    // Auto resize textarea
-
-const textarea = form.querySelector("textarea");
-
-textarea.addEventListener("input", function () {
-    this.style.height = "auto";
-    this.style.height = this.scrollHeight + "px";
-});
 
     field.addEventListener("input", checkField);
     field.addEventListener("change", checkField);
 
-
-    // Kontrola při načtení (autofill)
+    // kontrola autofillu
     setTimeout(checkField.bind(field), 500);
 });
-    
+
+// Odeslání formuláře
 form.addEventListener("submit", function(e) {
     e.preventDefault();
 
@@ -801,27 +801,22 @@ form.addEventListener("submit", function(e) {
         if (response.ok) {
             window.location.href = "https://zajait.github.io/zajait/thankyou.html";
         } else {
-    errorBox.textContent = "Prosím vyplňte správný formát emailu.";
-    errorBox.style.display = "block";
-}
-
+            errorBox.textContent = "Prosím vyplňte správný formát emailu.";
+            errorBox.style.display = "block";
+        }
     })
     .catch(() => {
         errorBox.textContent = "Chyba připojení.";
         errorBox.style.display = "block";
     });
 });
-<script>
-const textarea = document.querySelector(".contact-form textarea");
-
-textarea.addEventListener("input", function () {
-    this.style.height = "auto";
-    this.style.height = this.scrollHeight + "px";
-});
 </script>
+
+
     
 </body>
 </html>
+
 
 
 
