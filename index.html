@@ -455,6 +455,21 @@ input[type="submit"] {
     font-size: 1.1rem;
 }
 
+        /* Chybová hláška formuláře */
+
+.form-error {
+    color: #ff2fd6;
+    margin-bottom: 15px;
+    font-weight: 600;
+    display: none;
+    text-align: center;
+}
+
+.input-error {
+    border: 2px solid #ff2fd6 !important;
+    box-shadow: 0 0 12px rgba(255,47,214,0.6);
+}
+
     </style>
 </head>
 
@@ -563,10 +578,12 @@ input[type="submit"] {
 
         <div class="btn fake-btn">Kontaktní formulář</div>
         
-<form class="contact-form" 
+<form class="contact-form"
       id="contactForm"
-      action="https://formspree.io/f/xjgrqrbz" 
-      method="POST">
+      action="https://formspree.io/f/xjgrqrbz"
+      method="POST"
+      novalidate>
+
       data-formspree="true">
      
       <input type="hidden" name="_next" value="https://zajait.github.io/zajait/thankyou.html">
@@ -585,6 +602,8 @@ input[type="submit"] {
 
 
     </div>
+
+    <div id="formError" class="form-error"></div>
 
     <button type="submit" class="btn form-btn">Odeslat</button>
 
@@ -630,9 +649,34 @@ revealOnScroll();
 
 <script>
 const form = document.getElementById("contactForm");
+const errorBox = document.getElementById("formError");
 
 form.addEventListener("submit", function(e) {
-    e.preventDefault(); // zastaví klasické odeslání
+    e.preventDefault();
+
+    errorBox.style.display = "none";
+    errorBox.textContent = "";
+
+    const name = form.querySelector('input[name="name"]');
+    const email = form.querySelector('input[name="email"]');
+    const message = form.querySelector('textarea[name="message"]');
+
+    let valid = true;
+
+    [name, email, message].forEach(field => {
+        field.classList.remove("input-error");
+
+        if (!field.value.trim()) {
+            field.classList.add("input-error");
+            valid = false;
+        }
+    });
+
+    if (!valid) {
+        errorBox.textContent = "Prosím vyplňte všechna povinná pole.";
+        errorBox.style.display = "block";
+        return;
+    }
 
     const data = new FormData(form);
 
@@ -647,18 +691,22 @@ form.addEventListener("submit", function(e) {
         if (response.ok) {
             window.location.href = "https://zajait.github.io/zajait/thankyou.html";
         } else {
-            alert("Něco se pokazilo. Zkuste to prosím znovu.");
+            errorBox.textContent = "Odeslání se nezdařilo. Zkuste to později.";
+            errorBox.style.display = "block";
         }
     })
-    .catch(error => {
-        alert("Chyba při odesílání.");
+    .catch(() => {
+        errorBox.textContent = "Chyba připojení.";
+        errorBox.style.display = "block";
     });
 });
 </script>
 
+
     
 </body>
 </html>
+
 
 
 
