@@ -920,8 +920,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // ===== ODESLÁNÍ FORMULÁŘE =====
     form.addEventListener("submit", function(e) {
-        e.preventDefault();
-
+        
         errorBox.style.display = "none";
         errorBox.textContent = "";
 
@@ -947,15 +946,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         const data = new FormData(form);
-
-        fetch(form.action, {
-            method: "POST",
-            body: data
-        })
-        .then(() => {
-    window.location.href = "thankyou.html";
-});
-
+       
 
     });
 
@@ -965,6 +956,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 </body>
 </html>
+
 
 
 
