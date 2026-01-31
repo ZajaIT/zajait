@@ -551,6 +551,45 @@ textarea:-webkit-autofill {
 
 }
 
+        /* ===== FLOATING PLACEHOLDER / LABEL ===== */
+
+.field {
+    position: relative;
+    margin-bottom: 22px;
+}
+
+.field input,
+.field textarea {
+    width: 100%;
+    padding: 18px 16px;
+    padding-top: 26px;
+    font-size: 1rem;
+}
+
+/* Label (text v poli) */
+
+.field label {
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    color: rgba(255,255,255,0.7);
+    font-size: 1rem;
+    pointer-events: none;
+    transform: translateY(-50%);
+    transition: 0.25s ease;
+}
+
+/* Aktivní stav */
+
+.field input:focus + label,
+.field input:not(:placeholder-shown) + label,
+.field textarea:focus + label,
+.field textarea:not(:placeholder-shown) + label {
+    top: 7px;
+    font-size: 0.75rem;
+    color: #ff2fd6;
+}
+
     </style>
 </head>
 
@@ -673,14 +712,22 @@ textarea:-webkit-autofill {
 
     <div class="form-box">
 
-        <input type="text" name="name" placeholder="Vaše jméno" required>
-
-<input type="email" name="email" placeholder="Váš email" required>
-
-<textarea name="message" placeholder="Vaše zpráva" required></textarea>
-
-
+    <div class="field">
+        <input type="text" name="name" required placeholder=" ">
+        <label>Vaše jméno</label>
     </div>
+
+    <div class="field">
+        <input type="email" name="email" required placeholder=" ">
+        <label>Váš email</label>
+    </div>
+
+    <div class="field">
+        <textarea name="message" required placeholder=" "></textarea>
+        <label>Vaše zpráva</label>
+    </div>
+
+</div>
 
     <div id="formError" class="form-error"></div>
 
@@ -816,6 +863,7 @@ form.addEventListener("submit", function(e) {
     
 </body>
 </html>
+
 
 
 
