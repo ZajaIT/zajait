@@ -551,46 +551,51 @@ textarea:-webkit-autofill {
 
 }
 
-        /* ===== FLOATING LABEL - NAD POLI ===== */
+        /* ===== FLOATING LABEL - SPRÁVNÁ VERZE ===== */
 
 .field {
     position: relative;
-    margin-bottom: 26px;
+    margin-bottom: 28px;
 }
 
-/* Zachováme původní výšku inputu */
+/* Input / textarea */
 
 .field input,
 .field textarea {
+    width: 100%;
     padding: 14px 16px;
+    font-size: 1rem;
+    background: rgba(255,255,255,0.06);
 }
 
-/* Label nad inputem */
+/* Label – výchozí stav (uvnitř pole) */
 
 .field label {
     position: absolute;
-    left: 12px;
-    top: -9px;
-    background: #0b0012;
-    padding: 0 6px;
-    font-size: 0.75rem;
-    color: #ff2fd6;
-    opacity: 0;
-    transform: translateY(6px);
-    transition: 0.25s ease;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255,255,255,0.6);
+    font-size: 1rem;
     pointer-events: none;
+    transition: 0.25s ease;
+    background: transparent;
 }
 
-/* Aktivace labelu */
+/* Aktivní stav – NAD POLI */
 
 .field input:focus + label,
 .field input:not(:placeholder-shown) + label,
 .field textarea:focus + label,
 .field textarea:not(:placeholder-shown) + label {
-    opacity: 1;
-    transform: translateY(0);
+    top: -10px;
+    left: 12px;
+    font-size: 0.75rem;
+    color: #ff2fd6;
+    background: #0b0012;
+    padding: 0 6px;
+    transform: none;
 }
-
 
     </style>
 </head>
@@ -715,9 +720,9 @@ textarea:-webkit-autofill {
     <div class="form-box">
 
     <div class="field">
-        <input type="text" name="name" required placeholder=" ">
-        <label>Vaše jméno</label>
-    </div>
+    <input type="text" name="name" required placeholder=" ">
+    <label>Vaše jméno</label>
+</div>
 
     <div class="field">
         <input type="email" name="email" required placeholder=" ">
@@ -865,6 +870,7 @@ form.addEventListener("submit", function(e) {
     
 </body>
 </html>
+
 
 
 
