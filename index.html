@@ -396,11 +396,6 @@ input[type="submit"] {
     font-family: inherit;
 }
 
-.contact-form input.filled,
-.contact-form textarea.filled {
-    background-color: #ffffff !important;
-    color: #111111 !important;
-}
     width: 100%;
     padding: 12px 15px;
     margin-bottom: 15px;
@@ -426,10 +421,6 @@ input[type="submit"] {
 
 /* Vyplněné pole = bílé */
 
-.filled {
-    background: white !important;
-    color: #111 !important;
-}
 
 /* Autofill fix (Chrome) */
 
@@ -587,13 +578,6 @@ textarea:-webkit-autofill {
     margin-bottom: 22px;
 }
 
-/* Reset jen pro floating */
-
-.contact-form .field input,
-.contact-form .field textarea {
-    padding: 14px 16px !important;
-    background: rgba(0,0,0,0.7) !important;
-}
 
 /* Placeholder label */
 
@@ -647,6 +631,29 @@ textarea:-webkit-autofill {
 .contact-form .field textarea.filled {
     background: #ffffff !important;
     color: #111111 !important;
+}
+
+/* Autofill */
+
+.contact-form input:-webkit-autofill,
+.contact-form textarea:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset !important;
+    -webkit-text-fill-color: #111 !important;
+}
+/* =============================
+   KONTAKT FORM – FINÁL
+   ============================= */
+
+.contact-form .field input,
+.contact-form .field textarea {
+    background: rgba(0,0,0,0.7);
+    color: #ffffff;
+}
+
+.contact-form .field input.filled,
+.contact-form .field textarea.filled {
+    background: #ffffff;
+    color: #111111;
 }
 
 /* Autofill */
@@ -915,6 +922,7 @@ form.addEventListener("submit", function(e) {
     
 </body>
 </html>
+
 
 
 
