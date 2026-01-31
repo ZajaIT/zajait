@@ -682,7 +682,13 @@ textarea:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 1000px white inset !important;
     -webkit-text-fill-color: #111 !important;
 }
-    
+    /* Textarea – label nahoře už v základu */
+
+.contact-form .field textarea + label {
+    top: 18px;
+    transform: none;
+}
+
     </style>
 </head>
 
@@ -951,6 +957,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 </body>
 </html>
+
 
 
 
