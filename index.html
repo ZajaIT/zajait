@@ -469,7 +469,12 @@ input[type="submit"] {
     border: 2px solid #ff2fd6 !important;
     box-shadow: 0 0 12px rgba(255,47,214,0.6);
 }
+/* Vyplněné pole */
 
+.filled {
+    background: rgba(255,255,255,0.12) !important;
+}
+        
     </style>
 </head>
 
@@ -649,6 +654,27 @@ revealOnScroll();
 const form = document.getElementById("contactForm");
 const errorBox = document.getElementById("formError");
 
+// Sleduje vyplnění polí
+
+const fields = form.querySelectorAll("input, textarea");
+
+fields.forEach(field => {
+
+    function checkField() {
+        if (field.value.trim() !== "") {
+            field.classList.add("filled");
+        } else {
+            field.classList.remove("filled");
+        }
+    }
+
+    field.addEventListener("input", checkField);
+    field.addEventListener("change", checkField);
+
+    // Kontrola při načtení (autofill)
+    setTimeout(checkField, 500);
+});
+    
 form.addEventListener("submit", function(e) {
     e.preventDefault();
 
@@ -705,6 +731,7 @@ form.addEventListener("submit", function(e) {
     
 </body>
 </html>
+
 
 
 
