@@ -411,6 +411,30 @@ input[type="submit"] {
 
     transition: 0.2s ease;
 }
+        /* Základ input */
+
+.contact-form input,
+.contact-form textarea {
+    background: rgba(255,255,255,0.05);
+    color: white;
+    border: 1px solid rgba(255,47,214,0.3);
+    transition: 0.3s;
+}
+
+/* Vyplněné pole = bílé */
+
+.filled {
+    background: white !important;
+    color: #111 !important;
+}
+
+/* Autofill fix (Chrome) */
+
+input:-webkit-autofill,
+textarea:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset !important;
+    -webkit-text-fill-color: #111 !important;
+}
 
 /* ===== KONTAKTNI FORMULAR ===== */
 
@@ -731,6 +755,7 @@ form.addEventListener("submit", function(e) {
     
 </body>
 </html>
+
 
 
 
