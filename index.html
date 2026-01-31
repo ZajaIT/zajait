@@ -551,52 +551,41 @@ textarea:-webkit-autofill {
 
 }
 
-        /* ===== FLOATING LABEL - FINÁLNÍ FIX ===== */
+        /* ===== FLOATING LABEL – ZACHOVÁ DESIGN ===== */
 
 .field {
     position: relative;
-    margin-bottom: 32px;
-    padding-top: 12px; /* prostor pro label */
+    margin-bottom: 22px;
 }
 
-/* Input / textarea */
-
-.field input,
-.field textarea {
-    width: 100%;
-    padding: 16px 16px;
-    font-size: 1rem;
-    background: rgba(255,255,255,0.06);
-}
-
-/* Label – výchozí stav (uvnitř) */
+/* Label = původní placeholder */
 
 .field label {
     position: absolute;
-    left: 16px;
+    left: 18px;
     top: 50%;
     transform: translateY(-50%);
-    color: rgba(255,255,255,0.6);
+    color: rgba(255,255,255,0.5);
     font-size: 1rem;
     pointer-events: none;
     transition: 0.25s ease;
-    background: transparent;
 }
 
-/* Aktivní stav – OPRAVDU NAD RÁMEČKEM */
+/* Aktivní stav */
 
 .field input:focus + label,
 .field input:not(:placeholder-shown) + label,
 .field textarea:focus + label,
 .field textarea:not(:placeholder-shown) + label {
-    top: 0;
-    transform: translateY(-60%);
+
+    top: -12px;
+    left: 14px;
+
     font-size: 0.75rem;
     color: #ff2fd6;
 
-    background: #0b0012;
-    padding: 0 8px;
-    border-radius: 4px;
+    background: #000;
+    padding: 0 6px;
 }
 
 
@@ -873,6 +862,7 @@ form.addEventListener("submit", function(e) {
     
 </body>
 </html>
+
 
 
 
