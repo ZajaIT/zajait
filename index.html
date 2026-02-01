@@ -959,6 +959,17 @@ if (!email.value.trim()) {
     return;
 }
 
+    // kontrola formátu emailu
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+if (!emailPattern.test(email.value.trim())) {
+    email.classList.add("input-error");
+
+    errorBox.textContent = "Zadejte prosím platný formát emailu";
+    errorBox.style.display = "block";
+    return;
+}
+
 if (!message.value.trim()) {
     message.classList.add("input-error");
 
@@ -1014,6 +1025,7 @@ if (!message.value.trim()) {
 
 </body>
 </html>
+
 
 
 
