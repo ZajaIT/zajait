@@ -696,6 +696,26 @@ textarea:-webkit-autofill {
     background: #000;
     padding: 0 6px;
 }
+/* ===== LOADING BUTTON ===== */
+
+.form-btn.loading {
+    pointer-events: none;
+    opacity: 0.8;
+    background: linear-gradient(90deg, #ff2fd6, #8a2eff);
+    animation: pulse 1.2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 10px #ff2fd6;
+    }
+    50% {
+        box-shadow: 0 0 25px #ff2fd6;
+    }
+    100% {
+        box-shadow: 0 0 10px #ff2fd6;
+    }
+}
 
     </style>
 </head>
@@ -996,6 +1016,13 @@ if (!message.value.trim()) {
         return;
     }
 
+    // loading animace na tlačítku
+const submitBtn = form.querySelector('button[type="submit"]');
+
+submitBtn.classList.add("loading");
+submitBtn.textContent = "Odesílám…";
+submitBtn.disabled = true;
+
     // odeslání
     const data = new FormData(form);
 
@@ -1014,9 +1041,16 @@ if (!message.value.trim()) {
         }
     })
     .catch(() => {
-        errorBox.textContent = "Nepodařilo se odeslat formulář. Zkuste to prosím později.";
-        errorBox.style.display = "block";
-    });
+
+    // vrátíme tlačítko zpět
+    submitBtn.classList.remove("loading");
+    submitBtn.textContent = "Odeslat";
+    submitBtn.disabled = false;
+
+    errorBox.textContent = "Nepodařilo se odeslat formulář. Zkuste to prosím později.";
+    errorBox.style.display = "block";
+});
+
 });
 
 });
@@ -1025,6 +1059,7 @@ if (!message.value.trim()) {
 
 </body>
 </html>
+
 
 
 
