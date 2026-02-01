@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZajaIT – Tvorba webů</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="favicon.png">
+
+    <style>
+html {
+    scroll-behavior: smooth;
+}
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: radial-gradient(circle at top, #1a001f, #000);
+            color: #fff;
+            min-height: 100vh;
+        }
+
+        /* ---------- HLAVIČKA ---------- */
+
+        header {
+    padding: 80px 20px;
+    position: relative;
+    text-align: center;
+}
+
+
+
+
+
+        header img {
+            max-width: 300px;
+            width: 100%;
+            margin-bottom: 30px;
+            filter: drop-shadow(0 0 20px #ff2fd6);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            background: linear-gradient(90deg, #ff2fd6, #8a2eff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        /* ---------- SEKCE ---------- */
+
+        section {
+            max-width: 1100px;
+            margin: auto;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #ff2fd6;
+        }
+
+        /* ---------- SLUŽBY ---------- */
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .service-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 47, 214, 0.3);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: 0.3s;
+        }
+
+        .service-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px #ff2fd6;
+        }
+
+        .service-box h3 {
+            margin-bottom: 10px;
+            color: #ff9bf0;
+        }
+
+        /* ---------- KONTAKT ---------- */
+
+        .contact {
+            text-align: center;
+        }
+
+        .contact p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 30px;
+            background: linear-gradient(90deg, #ff2fd6, #8a2eff);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            box-shadow: 0 0 15px #ff2fd6;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px #ff2fd6;
+        }
+
+        /* ---------- PATIČKA ---------- */
+
+        footer {
+            text-align: center;
+            padding: 30px 15px;
+            background: rgba(255,255,255,0.03);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+.hero-text {
+    font-size: 3rem;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.hero-line1 {
+    font-size: 3rem;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.hero-line2 {
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin-top: 8px;
+    white-space: nowrap;
+}
+
+/* Mobil */
+@media (max-width: 600px) {
+    .hero-line1 {
+        font-size: 2rem;
+    }
+
+    .hero-line2 {
+        font-size: 1.2rem;
+    }
+}
+
+.hero-line1,
+.hero-line2 {
+    white-space: normal;
+}
+
+
+/* HEADER + MENU */
+
+.top-header {
+    padding: 30px 20px;
+}
+
+.logo {
+    max-height: 200px;
+    width: auto;
+    margin-top: 70px;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    margin-left: 25px;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.menu a:hover {
+    color: #ff2fd6;
+}
+
+/* Mobil */
+
+@media (max-width: 700px) {
+    .nav-bar {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .menu a {
+        margin: 0 10px;
+    }
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ===== HAMBURGER MENU ===== */
+
+.hamburger {
+    display: none; /* na PC schovaný */
+    font-size: 28px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+/* PC menu */
+.menu {
+    display: flex;
+}
+
+/* Mobil */
+@media (max-width: 800px) {
+
+    .hamburger {
+        display: block; /* na mobilu vidět */
+    }
+
+@media (max-width: 800px) {
+    .phone {
+        display: none;
+    }
+}
+
+    .menu {
+        display: none; /* na mobilu schované */
+        flex-direction: column;
+        background: rgba(0,0,0,0.95);
+        position: absolute;
+        top: 90px;
+        right: 20px;
+        padding: 15px 25px;
+        border-radius: 12px;
+        z-index: 1000;
+    }
+
+    .menu.show {
+        display: flex;
+    }
+}
+
+/* ===== HEADER LAYOUT ===== */
+
+.top-bar {
+    max-width: 1200px;
+    margin: 0 auto 40px;
+}
+
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Menu vpravo nahoře */
+
+.nav-right {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+}
+
+/* Telefon v hlavičce */
+
+.phone {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.00rem;
+    margin-right: 15px;
+    white-space: nowrap;
+transition: 0.3s;
+}
+
+.phone:hover {
+    color: #ff2fd6;
+    text-decoration: none;
+}
+
+.services-detail {
+    margin: 50px auto 0 auto;
+    text-align: center;
+    max-width: 800px;
+    width: 100%;
+}
+
+.services-detail ul {
+    text-align: center;
+}
+
+
+.services-detail h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #ff9bf0;
+}
+
+.services-detail p {
+    margin-bottom: 25px;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+.services-detail ul {
+    list-style: none;
+    padding: 0;
+}
+
+.services-detail li {
+    margin-bottom: 10px;
+    font-size: 1.05rem;
+}
+
+.services-detail {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+    max-width: 800px !important;
+    display: block !important;
+}
+
+/* Scroll animace */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fake-btn {
+    cursor: default;
+    opacity: 0.95;
+    box-shadow: 0 0 15px #ff2fd6;
+}
+
+.fake-btn:hover {
+    transform: none;
+    box-shadow: 0 0 15px #ff2fd6;
+}
+
+button,
+input[type="submit"] {
+    border: none;
+    outline: none;
+    background: none;
+    font-family: inherit;
+}
+
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(255, 47, 214, 0.5);
+    border-radius: 10px;
+
+    color: white;
+    font-size: 1rem;
+
+    transition: 0.2s ease;
+}
+        /* Základ input */
+
+.contact-form input,
+.contact-form textarea {
+    background: rgba(255,255,255,0.05);
+    color: white;
+    border: 1px solid rgba(255,47,214,0.3);
+    transition: 0.3s;
+}
+
+/* Vyplněné pole = bílé */
+
+
+/* Autofill fix (Chrome) */
+
+input:-webkit-autofill,
+textarea:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset !important;
+    -webkit-text-fill-color: #111 !important;
+}
+
+/* ===== KONTAKTNI FORMULAR ===== */
+
+.contact-form {
+    max-width: 520px;
+    margin: 40px auto 0 auto;
+    text-align: center;
+}
+
+/* BOX s policky */
+
+.form-box {
+    padding: 35px 30px;
+
+    background: linear-gradient(
+        145deg,
+        rgba(255,47,214,0.08),
+        rgba(138,46,255,0.05)
+    );
+
+    border: 2px solid rgba(255, 47, 214, 0.6);
+    border-radius: 18px;
+
+    backdrop-filter: blur(12px);
+
+    box-shadow:
+        0 0 25px rgba(255,47,214,0.4),
+        0 0 50px rgba(138,46,255,0.2);
+
+    transition: 0.3s ease;
+}
+
+.form-box:hover {
+    box-shadow:
+        0 0 35px rgba(255,47,214,0.7),
+        0 0 70px rgba(138,46,255,0.4);
+}
+
+.form-btn {
+    margin-top: 25px;
+    padding: 14px 40px;
+    font-size: 1.1rem;
+}
+
+        /* Chybová hláška formuláře */
+
+.form-error {
+    color: #ff2fd6;
+    margin-bottom: 15px;
+    font-weight: 600;
+    display: none;
+    text-align: center;
+}
+
+.input-error {
+    border: 2px solid #ff2fd6 !important;
+    box-shadow: 0 0 12px rgba(255,47,214,0.6);
+}
+/* Vyplněné pole */
+
+
+    /* ===== KONTAKTNÍ FORMULÁŘ – CLEAN ===== */
+
+.contact-form {
+    max-width: 520px;
+    margin: 40px auto 0;
+    text-align: center;
+}
+
+.form-box {
+    padding: 35px 30px;
+    background: linear-gradient(
+        145deg,
+        rgba(255,47,214,0.08),
+        rgba(138,46,255,0.05)
+    );
+    border: 2px solid rgba(255, 47, 214, 0.6);
+    border-radius: 18px;
+    backdrop-filter: blur(12px);
+}
+
+/* Field wrapper */
+
+.field {
+    position: relative;
+    margin-bottom: 22px;
+}
+
+/* Input / textarea */
+
+.contact-form .field input,
+.contact-form .field textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,47,214,0.4);
+    background: rgba(0,0,0,0.7);
+    color: #ffffff;
+    font-size: 1rem;
+    outline: none;
+    transition: 0.25s;
+}
+
+/* Focus */
+
+.contact-form .field input:focus,
+.contact-form .field textarea:focus {
+    border-color: #ff2fd6;
+    box-shadow: 0 0 10px rgba(255,47,214,0.5);
+}
+
+/* Filled = white */
+
+.contact-form .field input.filled,
+.contact-form .field textarea.filled {
+    background: #ffffff;
+    color: #111111;
+    -webkit-text-fill-color: #111111;
+}
+
+/* Textarea */
+
+.contact-form textarea {
+    resize: none;
+    min-height: 120px;
+    overflow: hidden;
+}
+
+/* Label */
+
+.contact-form .field label {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255,255,255,0.55);
+    font-size: 1rem;
+    pointer-events: none;
+    transition: 0.25s;
+    background: transparent;
+    padding: 0 6px;
+}
+
+/* Floating */
+
+.contact-form .field input:focus + label,
+.contact-form .field input:not(:placeholder-shown) + label,
+.contact-form .field textarea:focus + label,
+.contact-form .field textarea:not(:placeholder-shown) + label {
+    top: -12px;
+    left: 14px;
+    font-size: 0.75rem;
+    color: #ff2fd6;
+    background: #000;
+}
+
+/* Autofill */
+
+.contact-form input:-webkit-autofill,
+.contact-form textarea:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset !important;
+    -webkit-text-fill-color: #111 !important;
+}
+
+/* =============================
+   KONTAKT FORM – FINÁLNÍ OPRAVA
+   ============================= */
+
+.contact-form .field {
+    position: relative;
+    margin-bottom: 22px;
+}
+
+/* Input */
+
+.contact-form .field input,
+.contact-form .field textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,47,214,0.4);
+
+    background: rgba(0,0,0,0.7);
+    color: #ffffff;
+
+    font-size: 1rem;
+    outline: none;
+    transition: 0.25s;
+}
+
+/* Focus */
+
+.contact-form .field input:focus,
+.contact-form .field textarea:focus {
+    border-color: #ff2fd6;
+    box-shadow: 0 0 10px rgba(255,47,214,0.5);
+}
+
+/* Vyplněné = bílé pole + černý text */
+
+.contact-form .field input.filled,
+.contact-form .field textarea.filled {
+    background: #ffffff !important;
+    color: #111111 !important;
+    -webkit-text-fill-color: #111111 !important;
+}
+
+/* Label */
+
+.contact-form .field label {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    color: rgba(255,255,255,0.55);
+    font-size: 1rem;
+
+    pointer-events: none;
+    transition: 0.25s ease;
+}
+
+/* Floating label */
+
+.contact-form .field input:focus + label,
+.contact-form .field input:not(:placeholder-shown) + label,
+.contact-form .field textarea:focus + label,
+.contact-form .field textarea:not(:placeholder-shown) + label {
+
+    top: -12px;
+    left: 14px;
+
+    font-size: 0.75rem;
+    color: #ff2fd6;
+    background: #000;
+    padding: 0 6px;
+}
+
+/* Textarea */
+
+.contact-form textarea {
+    resize: none;
+    min-height: 120px;
+    overflow: hidden;
+}
+
+/* Autofill */
+
+.contact-form input:-webkit-autofill,
+.contact-form textarea:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset !important;
+    -webkit-text-fill-color: #111 !important;
+}
+    /* Textarea – label nahoře už v základu */
+
+.contact-form .field textarea + label {
+    top: 18px;
+    transform: none;
+}
+/* Textarea – floating label víc nahoru než input */
+
+.contact-form .field textarea:focus + label,
+.contact-form .field textarea:not(:placeholder-shown) + label {
+    top: -22px;
+    background: #000;
+    padding: 0 6px;
+}
+/* ===== LOADING BUTTON ===== */
+
+.form-btn.loading {
+    pointer-events: none;
+    opacity: 0.8;
+    background: linear-gradient(90deg, #ff2fd6, #8a2eff);
+    animation: pulse 1.2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 10px #ff2fd6;
+    }
+    50% {
+        box-shadow: 0 0 25px #ff2fd6;
+    }
+    100% {
+        box-shadow: 0 0 10px #ff2fd6;
+    }
+}
+
+        /* Kurzor jako ručička na tlačítkách */
+
+button,
+.btn,
+input[type="submit"] {
+    cursor: pointer;
+}
+
+    </style>
+</head>
+
+<body>
+
+    <!-- HLAVIČKA -->
+    <header class="top-header" id="home">
+
+    <div class="top-bar">
+
+    <img src="logo.png" alt="Logo" class="logo">
+
+    <div class="nav-right">
+
+        <a href="tel:+420725007307" class="phone">
+    <i class="fa-solid fa-phone"></i> +420 725 007 307
+</a>
+
+
+        <button class="hamburger" onclick="toggleMenu()">☰</button>
+
+        <div class="menu" id="menu">
+    <a href="#home">Domů</a>
+    <a href="#sluzby">Služby</a>
+    <a href="#kontakt">Kontakt</a>
+</div>
+
+
+    </div>
+
+</div>
+
+
+
+    <div class="hero-text">
+        <div class="hero-line1">Tvorba webových stránek</div>
+        <div class="hero-line2">
+            Komplexní tvorba webových stránek na míru. Pomáháme Vám být vidět online.
+        </div>
+    </div>
+
+</header>
+
+
+
+
+
+    <!-- SLUŽBY -->
+<section id="sluzby" class="reveal">
+    <h2 class="section-title">Proč si vybrat nás?</h2>
+
+    <div class="services">
+
+        <div class="service-box">
+            <h3>Tvorba webu</h3>
+            <p>Moderní webové stránky na míru. Rychle a za férovou cenu.</p>
+        </div>
+
+        <div class="service-box">
+            <h3>Optimalizace a připravenost</h3>
+            <p>Rychlost, SEO a technické vylepšení webů. Skvělé zobrazení na všech zařízeních.</p>
+        </div>
+
+        <div class="service-box">
+            <h3>Podpora</h3>
+            <p>Správa a dlouhodobá technická podpora. Jsme tu pro Vás.</p>
+        </div>
+
+    </div> <!-- KONEC services -->
+
+
+    <div class="services-detail reveal">
+
+        <h2 class="section-title">Co pro Vás zajistíme</h2>
+
+        <p>
+            Nabízíme kompletní tvorbu webových stránek od návrhu až po spuštění.
+            Postaráme se o moderní vzhled, funkčnost i optimalizaci.
+        </p>
+
+        <ul>
+            <li>✔️ Návrh designu na míru</li>
+            <li>✔️ Responzivní web pro mobil i PC</li>
+            <li>✔️ Rychlé načítání stránek</li>
+            <li>✔️ Zabezpečení stránek (SSL/HTTPS)</li>
+            <li>✔️ SEO optimalizace</li>
+            <li>✔️ Napojení na sociální sítě</li>
+            <li>✔️ Technická podpora</li>
+        </ul>
+
+    </div>
+
+</section>
+
+
+
+    <!-- KONTAKT -->
+    <section id="kontakt" class="contact reveal">
+        <h2 class="section-title">Kontakt</h2>
+
+        <p>Máte zájem o spolupráci?</p>
+        <p>Napište nám:</p> 
+
+        <p><strong>zaja.it@seznam.cz</strong></p>
+        <p>nebo použijte</p>
+
+        <div class="btn fake-btn">Kontaktní formulář</div>
+        
+<form class="contact-form"
+      id="contactForm"
+      action="https://formspree.io/f/xjgrqrbz"
+      method="POST"
+      novalidate>
+    
+      <input type="hidden" name="_next" value="https://zajait.github.io/zajait/thankyou.html">
+
+      <input type="hidden" name="_subject" value="Nová poptávka z webu ZajaIT">
+      <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="table">
+
+    <div class="form-box">
+
+    <div class="field">
+    <input type="text" name="name" required placeholder=" ">
+    <label>Vaše jméno</label>
+</div>
+
+    <div class="field">
+    <input type="tel" name="phone" required placeholder=" " pattern="[0-9+ ]{9,15}">
+    <label>Váš telefon</label>
+</div>
+    
+    <div class="field">
+        <input type="email" name="email" required placeholder=" ">
+        <label>Váš email</label>
+    </div>
+
+    <div class="field">
+        <textarea name="message" required placeholder=" "></textarea>
+        <label>Vaše zpráva</label>
+    </div>
+
+</div>
+
+    <div id="formError" class="form-error"></div>
+
+    <button type="submit" class="btn form-btn">Odeslat</button>
+
+</form>
+
+
+    </section>
+
+
+
+
+    <!-- PATIČKA -->
+    <footer>
+        © 2026 ZajaIT – Všechna práva vyhrazena
+    </footer>
+
+<script>
+function toggleMenu() {
+    document.getElementById("menu").classList.toggle("show");
+}
+</script>
+
+<script>
+function revealOnScroll() {
+
+    const reveals = document.querySelectorAll('.reveal');
+
+    for (let i = 0; i < reveals.length; i++) {
+
+        const windowHeight = window.innerHeight;
+        const revealTop = reveals[i].getBoundingClientRect().top;
+        const revealPoint = 100;
+
+        if (revealTop < windowHeight - revealPoint) {
+            reveals[i].classList.add('active');
+        }
+    }
+}
+
+window.addEventListener('scroll', revealOnScroll);
+revealOnScroll();
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const form = document.getElementById("contactForm");
+    const errorBox = document.getElementById("formError");
+
+    const fields = form.querySelectorAll("input, textarea");
+
+    // ===== FILLED STATE =====
+    function updateFilled() {
+        fields.forEach(field => {
+            if (field.value.trim() !== "") {
+                field.classList.add("filled");
+            } else {
+                field.classList.remove("filled");
+            }
+        });
+    }
+
+    fields.forEach(field => {
+        field.addEventListener("input", updateFilled);
+        field.addEventListener("change", updateFilled);
+    });
+
+    window.addEventListener("load", updateFilled);
+
+    // ===== AUTO RESIZE TEXTAREA =====
+    const textarea = form.querySelector("textarea");
+
+    textarea.addEventListener("input", function () {
+        this.style.height = "auto";
+        this.style.height = this.scrollHeight + "px";
+    });
+
+   // ===== SUBMIT =====
+form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    errorBox.style.display = "none";
+    errorBox.textContent = "";
+
+    const name = form.querySelector('input[name="name"]');
+    const phone = form.querySelector('input[name="phone"]');
+    const email = form.querySelector('input[name="email"]');
+    const message = form.querySelector('textarea[name="message"]');
+
+    let valid = true;
+
+    // kontrola prázdných polí + vlastní hlášky
+
+if (!name.value.trim()) {
+    name.classList.add("input-error");
+
+    errorBox.textContent = "Vyplňte prosím Vaše jméno";
+    errorBox.style.display = "block";
+    return;
+}
+
+if (!phone.value.trim()) {
+    phone.classList.add("input-error");
+
+    errorBox.textContent = "Vyplňte prosím telefon";
+    errorBox.style.display = "block";
+    return;
+}
+
+if (!email.value.trim()) {
+    email.classList.add("input-error");
+
+    errorBox.textContent = "Vyplňte prosím email";
+    errorBox.style.display = "block";
+    return;
+}
+
+    // kontrola formátu emailu
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+if (!emailPattern.test(email.value.trim())) {
+    email.classList.add("input-error");
+
+    errorBox.textContent = "Zadejte prosím platný formát emailu";
+    errorBox.style.display = "block";
+    return;
+}
+
+if (!message.value.trim()) {
+    message.classList.add("input-error");
+
+    errorBox.textContent = "Napište prosím zprávu";
+    errorBox.style.display = "block";
+    return;
+}
+
+
+    // kontrola telefonu
+    const phonePattern = /^[0-9+ ]{9,15}$/;
+
+    if (!phonePattern.test(phone.value.trim())) {
+        phone.classList.add("input-error");
+
+        errorBox.textContent = "Zadejte prosím platné telefonní číslo.";
+        errorBox.style.display = "block";
+        return;
+    }
+
+    if (!valid) {
+        errorBox.textContent = "Prosím vyplňte všechna povinná pole.";
+        errorBox.style.display = "block";
+        return;
+    }
+
+    // loading animace na tlačítku
+const submitBtn = form.querySelector('button[type="submit"]');
+
+submitBtn.classList.add("loading");
+submitBtn.textContent = "Odesílám…";
+submitBtn.disabled = true;
+
+    // odeslání
+    const data = new FormData(form);
+
+    fetch(form.action, {
+        method: "POST",
+        body: data,
+        headers: {
+            "Accept": "application/json"
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            window.location.href = "https://zajait.github.io/zajait/thankyou.html";
+        } else {
+            throw new Error("Chyba odeslání");
+        }
+    })
+    .catch(() => {
+
+    // vrátíme tlačítko zpět
+    submitBtn.classList.remove("loading");
+    submitBtn.textContent = "Odeslat";
+    submitBtn.disabled = false;
+
+    errorBox.textContent = "Nepodařilo se odeslat formulář. Zkuste to prosím později.";
+    errorBox.style.display = "block";
+});
+
+});
+
+});
+</script>
+
+    <script>
+if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+}
+
+window.addEventListener("load", function () {
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+});
+</script>
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
