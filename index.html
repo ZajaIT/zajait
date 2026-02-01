@@ -933,15 +933,40 @@ form.addEventListener("submit", function(e) {
 
     let valid = true;
 
-    // kontrola prázdných polí
-    [name, phone, email, message].forEach(field => {
-        field.classList.remove("input-error");
+    // kontrola prázdných polí + vlastní hlášky
 
-        if (!field.value.trim()) {
-            field.classList.add("input-error");
-            valid = false;
-        }
-    });
+if (!name.value.trim()) {
+    name.classList.add("input-error");
+
+    errorBox.textContent = "Vyplňte prosím Vaše jméno";
+    errorBox.style.display = "block";
+    return;
+}
+
+if (!phone.value.trim()) {
+    phone.classList.add("input-error");
+
+    errorBox.textContent = "Vyplňte prosím telefon";
+    errorBox.style.display = "block";
+    return;
+}
+
+if (!email.value.trim()) {
+    email.classList.add("input-error");
+
+    errorBox.textContent = "Vyplňte prosím email";
+    errorBox.style.display = "block";
+    return;
+}
+
+if (!message.value.trim()) {
+    message.classList.add("input-error");
+
+    errorBox.textContent = "Napište prosím zprávu";
+    errorBox.style.display = "block";
+    return;
+}
+
 
     // kontrola telefonu
     const phonePattern = /^[0-9+ ]{9,15}$/;
@@ -989,6 +1014,7 @@ form.addEventListener("submit", function(e) {
 
 </body>
 </html>
+
 
 
 
