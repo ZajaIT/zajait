@@ -825,7 +825,7 @@ textarea:-webkit-autofill {
 </div>
 
     <div class="field">
-    <input type="tel" name="phone" required placeholder=" ">
+    <input type="tel" name="phone" required placeholder=" " pattern="[0-9+ ]{9,15}">
     <label>Váš telefon</label>
 </div>
     
@@ -978,6 +978,7 @@ const message = form.querySelector('textarea[name="message"]');
 
 </body>
 </html>
+
 
 
 
