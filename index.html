@@ -1061,18 +1061,21 @@ if ('scrollRestoration' in history) {
     history.scrollRestoration = 'manual';
 }
 
-window.onload = function () {
-    window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-});
+window.addEventListener("load", function () {
 
-};
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+});
 </script>
+
 
 
 </body>
 </html>
+
 
 
 
