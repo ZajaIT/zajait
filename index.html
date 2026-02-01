@@ -935,12 +935,26 @@ const message = form.querySelector('textarea[name="message"]');
         let valid = true;
 
         [name, phone, email, message].forEach(field => {
-            field.classList.remove("input-error");
+    field.classList.remove("input-error");
 
-            if (!field.value.trim()) {
-                field.classList.add("input-error");
-                valid = false;
-            }
+    if (!field.value.trim()) {
+        field.classList.add("input-error");
+        valid = false;
+    }
+});
+
+// kontrola telefonu navíc
+const phonePattern = /^[0-9+ ]{9,15}$/;
+
+if (!phonePattern.test(phone.value.trim())) {
+    phone.classList.add("input-error");
+    valid = false;
+
+    errorBox.textContent = "Zadejte prosím platné telefonní číslo.";
+    errorBox.style.display = "block";
+    return;
+}
+
         });
 
         if (!valid) {
@@ -978,6 +992,7 @@ const message = form.querySelector('textarea[name="message"]');
 
 </body>
 </html>
+
 
 
 
