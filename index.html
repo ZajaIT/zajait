@@ -919,72 +919,69 @@ document.addEventListener("DOMContentLoaded", function () {
         this.style.height = this.scrollHeight + "px";
     });
 
-    // ===== SUBMIT =====
-    form.addEventListener("submit", function(e) {
-        e.preventDefault();
+   // ===== SUBMIT =====
+form.addEventListener("submit", function(e) {
+    e.preventDefault();
 
-        errorBox.style.display = "none";
-        errorBox.textContent = "";
+    errorBox.style.display = "none";
+    errorBox.textContent = "";
 
-        const name = form.querySelector('input[name="name"]');
-const phone = form.querySelector('input[name="phone"]');
-const email = form.querySelector('input[name="email"]');
-const message = form.querySelector('textarea[name="message"]');
+    const name = form.querySelector('input[name="name"]');
+    const phone = form.querySelector('input[name="phone"]');
+    const email = form.querySelector('input[name="email"]');
+    const message = form.querySelector('textarea[name="message"]');
 
+    let valid = true;
 
-        let valid = true;
+    // kontrola prázdných polí
+    [name, phone, email, message].forEach(field => {
+        field.classList.remove("input-error");
 
-        [name, phone, email, message].forEach(field => {
-    field.classList.remove("input-error");
-
-    if (!field.value.trim()) {
-        field.classList.add("input-error");
-        valid = false;
-    }
-});
-
-// kontrola telefonu navíc
-const phonePattern = /^[0-9+ ]{9,15}$/;
-
-if (!phonePattern.test(phone.value.trim())) {
-    phone.classList.add("input-error");
-    valid = false;
-
-    errorBox.textContent = "Zadejte prosím platné telefonní číslo.";
-    errorBox.style.display = "block";
-    return;
-}
-
-        });
-
-        if (!valid) {
-            errorBox.textContent = "Prosím vyplňte všechna povinná pole.";
-            errorBox.style.display = "block";
-            return;
+        if (!field.value.trim()) {
+            field.classList.add("input-error");
+            valid = false;
         }
-
-        const data = new FormData(form);
-
-        fetch(form.action, {
-            method: "POST",
-            body: data,
-            headers: {
-                "Accept": "application/json"
-            }
-        })
-        .then(response => {
-            if (response.ok) {
-                window.location.href = "https://zajait.github.io/zajait/thankyou.html";
-            } else {
-                throw new Error("Chyba odeslání");
-            }
-        })
-        .catch(() => {
-            errorBox.textContent = "Nepodařilo se odeslat formulář. Zkuste to prosím později.";
-            errorBox.style.display = "block";
-        });
-
     });
+
+    // kontrola telefonu
+    const phonePattern = /^[0-9+ ]{9,15}$/;
+
+    if (!phonePattern.test(phone.value.trim())) {
+        phone.classList.add("input-error");
+
+        errorBox.textContent = "Zadejte prosím platné telefonní číslo.";
+        errorBox.style.display = "block";
+        return;
+    }
+
+    if (!valid) {
+        errorBox.textContent = "Prosím vyplňte všechna povinná pole.";
+        errorBox.style.display = "block";
+        return;
+    }
+
+    // odeslání
+    const data = new FormData(form);
+
+    fetch(form.action, {
+        method: "POST",
+        body: data,
+        headers: {
+            "Accept": "application/json"
+        }
+    })
+    .then(response => {
+        if (response.ok) {
+            window.location.href = "https://zajait.github.io/zajait/thankyou.html";
+        } else {
+            throw new Error("Chyba odeslání");
+        }
+    })
+    .catch(() => {
+        errorBox.textContent = "Nepodařilo se odeslat formulář. Zkuste to prosím později.";
+        errorBox.style.display = "block";
+    });
+});
 
 });
 </script>
@@ -992,6 +989,7 @@ if (!phonePattern.test(phone.value.trim())) {
 
 </body>
 </html>
+
 
 
 
