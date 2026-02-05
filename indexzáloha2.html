@@ -9,6 +9,9 @@
     <meta name="google-site-verification" content="8IeDWSNKmbjlhy32gu-LTxZ9fRB4EQD5VaBzR6cVjqE" />
 
     <meta name="robots" content="index, follow">
+    
+    <link rel="preload" as="image" href="logo.png">
+
 
 <meta property="og:title" content="ZajaIT – Tvorba webů">
 <meta property="og:description" content="Moderní webové stránky na míru">
@@ -213,12 +216,13 @@ html {
 @media (max-width: 600px) {
 
     .hero-line1 {
-        font-size: 1.7rem;
+        font-size: 2.1rem;
         white-space: nowrap;
     }
 
     .hero-line2 {
         font-size: 1.05rem;
+        margin-top: 25px;
     }
 
     .hero-text {
@@ -243,6 +247,9 @@ html {
     max-height: 200px;
     width: auto;
     margin-top: 70px;
+
+    border-radius: 15px;
+    overflow: hidden;
 }
 
 .menu a {
@@ -793,6 +800,14 @@ input[type="submit"] {
     }
 }
 
+/* POSUN OBSAHU DOLŮ NA MOBILU */
+@media (max-width: 800px) {
+
+    header.top-header {
+        padding-top: 80px;
+    }
+
+}
     </style>
 </head>
 
