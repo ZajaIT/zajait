@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="cs">
 <head>
@@ -26,6 +25,7 @@
     <style>
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 90px;
 }
 
         * {
@@ -78,10 +78,14 @@ html {
         /* ---------- SEKCE ---------- */
 
         section {
-            max-width: 1100px;
-            margin: auto;
-            padding: 60px 20px;
-        }
+    max-width: 1100px;
+    margin: auto;
+    padding: 60px 20px;
+}
+
+#sluzby {
+    scroll-margin-top: 140px;
+}
 
         .section-title {
             font-size: 2.2rem;
@@ -89,6 +93,10 @@ html {
             text-align: center;
             color: #ff2fd6;
         }
+
+#sluzby {
+    scroll-margin-top: 30px;
+}
 
         /* ---------- SLUŽBY ---------- */
 
@@ -99,14 +107,17 @@ html {
         }
 
         .service-box {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 47, 214, 0.3);
-            border-radius: 15px;
-            padding: 25px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            transition: 0.3s;
-        }
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 47, 214, 0.3);
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    transition: 0.3s;
+
+    will-change: transform;
+    transform: translateZ(0);
+}
 
         .service-box:hover {
             transform: translateY(-5px);
@@ -160,10 +171,21 @@ html {
         /* ---------- RESPONSIVE ---------- */
 
         @media (max-width: 600px) {
-            header h1 {
-                font-size: 2.2rem;
-            }
-        }
+
+    header h1 {
+        font-size: 2.2rem;
+    }
+
+    header {
+        padding: 40px 20px;
+    }
+
+    .logo {
+        max-height: 140px;
+        margin-top: 20px;
+    }
+
+}
 
 .hero-text {
     font-size: 3rem;
@@ -171,7 +193,7 @@ html {
     color: white;
     text-align: center;
     width: 100%;
-    margin: 0 auto;
+    margin: -40px auto 0 auto;
 }
 
 .hero-line1 {
@@ -189,13 +211,16 @@ html {
 
 /* Mobil */
 @media (max-width: 600px) {
+
     .hero-line1 {
-        font-size: 2rem;
+        font-size: 1.7rem;
+        white-space: nowrap;
     }
 
     .hero-line2 {
-        font-size: 1.2rem;
+        font-size: 1.05rem;
     }
+
 }
 
 .hero-line1,
@@ -266,6 +291,7 @@ html {
 /* PC menu */
 .menu {
     display: flex;
+    margin-right: 40px;
 }
 
 /* Mobil */
@@ -275,11 +301,6 @@ html {
         display: block; /* na mobilu vidět */
     }
 
-@media (max-width: 800px) {
-    .phone {
-        display: none;
-    }
-}
 
     .menu {
         display: none; /* na mobilu schované */
@@ -315,9 +336,20 @@ html {
 /* Menu vpravo nahoře */
 
 .nav-right {
-    position: absolute;
-    top: 30px;
-    right: 30px;
+    position: fixed;
+    top: 0;
+    right: 0;
+
+    width: 100%;
+    padding: 15px 30px;
+
+    background: rgba(0, 0, 0, 0.95);
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    z-index: 2000;
 }
 
 /* Telefon v hlavičce */
@@ -329,7 +361,9 @@ html {
     font-size: 1.00rem;
     margin-right: 15px;
     white-space: nowrap;
-transition: 0.3s;
+    transition: 0.3s;
+
+    transform: translateX(-600px);
 }
 
 .phone:hover {
@@ -740,6 +774,21 @@ input[type="submit"] {
     cursor: pointer;
 }
 
+/* MOBIL – telefon vlevo v top baru */
+
+@media (max-width: 800px) {
+
+    .nav-right {
+        justify-content: space-between;
+    }
+
+    .phone {
+        margin: 0;
+        transform: none;
+        font-size: 0.95rem;
+    }
+}
+
     </style>
 </head>
 
@@ -750,7 +799,11 @@ input[type="submit"] {
 
     <div class="top-bar">
 
-    <img src="logo.png" alt="Logo" class="logo">
+    <img src="logo.png"
+     alt="Logo"
+     class="logo"
+     loading="eager"
+     decoding="async">
 
     <div class="nav-right">
 
@@ -759,7 +812,7 @@ input[type="submit"] {
 </a>
 
 
-        <button class="hamburger" onclick="toggleMenu()">☰</button>
+        <button class="hamburger" id="hamburger">☰</button>
 
         <div class="menu" id="menu">
     <a href="#home">Domů</a>
@@ -788,8 +841,8 @@ input[type="submit"] {
 
 
     <!-- SLUŽBY -->
-<section id="sluzby" class="reveal">
-    <h2 class="section-title">Proč si vybrat nás?</h2>
+<section class="reveal">
+    <h2 id="sluzby" class="section-title">Proč si vybrat nás?</h2>
 
     <div class="services">
 
@@ -901,11 +954,6 @@ input[type="submit"] {
         © 2026 ZajaIT – Všechna práva vyhrazena
     </footer>
 
-<script>
-function toggleMenu() {
-    document.getElementById("menu").classList.toggle("show");
-}
-</script>
 
 <script>
 function revealOnScroll() {
@@ -1094,16 +1142,47 @@ window.addEventListener("load", function () {
 });
 </script>
 
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const hamburger = document.getElementById("hamburger");
+    const menu = document.getElementById("menu");
+
+    // Otevření / zavření menu
+    hamburger.addEventListener("click", function (e) {
+        e.stopPropagation();
+
+        menu.classList.toggle("show");
+
+        // ikona ☰ / ✕
+        if (menu.classList.contains("show")) {
+            hamburger.textContent = "✕";
+        } else {
+            hamburger.textContent = "☰";
+        }
+    });
+
+    // Klik na položku menu = zavřít
+    menu.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", function () {
+            menu.classList.remove("show");
+            hamburger.textContent = "☰";
+        });
+    });
+
+    // Klik mimo menu = zavřít
+    document.addEventListener("click", function (e) {
+
+        if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+            menu.classList.remove("show");
+            hamburger.textContent = "☰";
+        }
+
+    });
+
+});
+</script>
 
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
