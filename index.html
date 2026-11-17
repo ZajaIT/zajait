@@ -381,6 +381,11 @@ html {
     padding: 0 20px;
 }
 
+        /* Zákaz scrollování při otevřeném mobilním menu */
+body.menu-open {
+    overflow: hidden;
+}
+
 /* ===== HAMBURGER MENU ===== */
 
 .hamburger {
@@ -1571,32 +1576,36 @@ document.addEventListener("DOMContentLoaded", function () {
     const hamburger = document.getElementById("hamburger");
     const menu = document.getElementById("menu");
 
-    hamburger.addEventListener("click", function (e) {
-        e.stopPropagation();
+   hamburger.addEventListener("click", function (e) {
+    e.stopPropagation();
 
-        menu.classList.toggle("show");
+    menu.classList.toggle("show");
 
-        // ikona ☰ / ✕
-        if (menu.classList.contains("show")) {
-            hamburger.textContent = "✕";
-        } else {
-            hamburger.textContent = "☰";
-        }
-    });
+    // ikona ☰ / ✕ + zákaz scrollování
+    if (menu.classList.contains("show")) {
+        hamburger.textContent = "✕";
+        document.body.classList.add("menu-open");
+    } else {
+        hamburger.textContent = "☰";
+        document.body.classList.remove("menu-open");
+    }
+});
 
     menu.querySelectorAll("a").forEach(link => {
-        link.addEventListener("click", function () {
-            menu.classList.remove("show");
-            hamburger.textContent = "☰";
-        });
+    link.addEventListener("click", function () {
+        menu.classList.remove("show");
+        hamburger.textContent = "☰";
+        document.body.classList.remove("menu-open");
     });
+});
 
     document.addEventListener("click", function (e) {
 
         if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
-            menu.classList.remove("show");
-            hamburger.textContent = "☰";
-        }
+    menu.classList.remove("show");
+    hamburger.textContent = "☰";
+    document.body.classList.remove("menu-open");
+}
 
     });
 
