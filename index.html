@@ -866,6 +866,166 @@ input[type="submit"] {
     }
 
 }
+
+        
+/* ===== MODAL VOP + GDPR – PC ===== */
+
+.legal-modal[hidden] {
+    display: none;
+}
+
+.legal-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 5000;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+}
+
+.legal-modal-content {
+    position: relative;
+    width: 100%;
+    max-width: 780px;
+    max-height: 85vh;
+    overflow-y: auto;
+    background: #120916;
+    border: 1px solid rgba(255, 47, 214, 0.5);
+    border-radius: 18px;
+    padding: 45px 40px;
+    box-shadow: 0 0 35px rgba(255, 47, 214, 0.2);
+    color: #fff;
+}
+
+.legal-modal-content h2 {
+    color: #ff2fd6;
+    font-size: 1.6rem;
+    line-height: 1.4;
+    margin-bottom: 30px;
+    padding-right: 25px;
+}
+
+.legal-modal-text h3 {
+    color: #ff9bf0;
+    font-size: 1.15rem;
+    margin: 28px 0 12px;
+}
+
+.legal-modal-text h4 {
+    color: #ff9bf0;
+    font-size: 1rem;
+    margin: 20px 0 10px;
+}
+
+.legal-modal-text p,
+.legal-modal-text li {
+    font-size: 0.9rem;
+    line-height: 1.8;
+}
+
+.legal-modal-text p {
+    margin-bottom: 12px;
+}
+
+.legal-modal-text ul {
+    padding-left: 25px;
+    margin-bottom: 15px;
+}
+
+.legal-modal-text li {
+    margin-bottom: 5px;
+}
+
+.legal-modal-close {
+    position: sticky;
+    top: 0;
+    float: right;
+    background: #120916;
+    color: #fff;
+    font-size: 32px;
+    cursor: pointer;
+    z-index: 2;
+    line-height: 1;
+}
+
+.legal-modal-close:hover {
+    color: #ff2fd6;
+}
+
+body.legal-modal-open {
+    overflow: hidden;
+}
+
+/* ===== TEXT POD FORMULÁŘEM ===== */
+
+.contact-form .gdpr-note {
+    font-size: 0.78rem;
+    line-height: 1.6;
+    margin-top: 18px;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.gdpr-note a {
+    color: #ff9bf0;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.gdpr-note a:hover {
+    color: #fff;
+}
+
+/* ===== TABLET ===== */
+
+@media (max-width: 900px) {
+    .legal-modal-content {
+        max-width: 680px;
+        padding: 35px 30px;
+    }
+}
+
+/* ===== MOBIL ===== */
+
+@media (max-width: 600px) {
+    .legal-modal {
+        padding: 12px;
+    }
+
+    .legal-modal-content {
+        max-height: 90dvh;
+        padding: 30px 20px;
+        border-radius: 14px;
+    }
+
+    .legal-modal-content h2 {
+        font-size: 1.2rem;
+    }
+
+    .legal-modal-text p,
+    .legal-modal-text li {
+        font-size: 0.82rem;
+        line-height: 1.7;
+    }
+
+    .legal-modal-text h3 {
+        font-size: 1rem;
+    }
+
+    .legal-modal-text h4 {
+        font-size: 0.9rem;
+    }
+
+    .legal-modal-close {
+        font-size: 28px;
+    }
+
+    .contact-form .gdpr-note {
+        font-size: 0.72rem;
+    }
+}
+
     </style>
 </head>
 
@@ -1086,6 +1246,11 @@ input[type="submit"] {
 
     <button type="submit" class="btn form-btn">Odeslat</button>
 
+<p class="gdpr-note">
+    Odesláním souhlasíte se zpracováním
+    <a href="#" id="openGdpr">osobních údajů</a>.
+</p>
+
 </form>
 
 
@@ -1103,11 +1268,119 @@ input[type="submit"] {
     </div>
 
     <div class="footer-links">
-        <a href="/op-gdpr.pdf" target="_blank">
-            Obchodní podmínky a ochrana osobních údajů
-        </a>
-    </div>
+  <a href="#" id="openLegal">
+    Obchodní podmínky a ochrana osobních údajů
+  </a>
+</div>
 </footer>
+
+    
+<!-- MODAL – OBCHODNÍ PODMÍNKY A GDPR -->
+<div id="legalModal" class="legal-modal" role="dialog" aria-modal="true" aria-labelledby="legalModalTitle" hidden>
+    <div class="legal-modal-content">
+
+        <button type="button" class="legal-modal-close" aria-label="Zavřít">×</button>
+
+        <h2 id="legalModalTitle">OBCHODNÍ PODMÍNKY A OCHRANA<br>OSOBNÍCH ÚDAJŮ</h2>
+
+        <div class="legal-modal-text">
+
+            <h3>1. Úvod</h3>
+            <p>Tyto podmínky upravují spolupráci mezi:</p>
+            <p>Poskytovatel:<br>
+            Andrea Zajícová<br>
+            IČ: 05359228<br>
+            Sídlo: Pouzdřanská 445, 691 25 Vranovice<br>
+            E-mail: zaja.it@seznam.cz<br>
+            a klientem.</p>
+
+            <h3>2. Co spolu děláme</h3>
+            <p>Zabývám se tvorbou webových stránek a souvisejícími službami.<br>
+            Spolupráce probíhá individuálně na základě domluvy (nejčastěji e-mailem).</p>
+
+            <h3>3. Jak vzniká spolupráce</h3>
+            <p>Spolupráce začíná ve chvíli, kdy si odsouhlasíme nabídku (např. e-mailem).<br>
+            Tyto podmínky jsou její součástí.</p>
+
+            <h3>4. Cena a platba</h3>
+            <ul>
+                <li>Cena se vždy domlouvá předem</li>
+                <li>Po potvrzení spolupráce vystavuji zálohovou fakturu</li>
+                <li>Po jejím zaplacení začínám pracovat</li>
+                <li>Doplatek se hradí po dokončení projektu</li>
+            </ul>
+            <p>Platba probíhá převodem na účet.</p>
+
+            <h3>5. Dodání</h3>
+            <p>Hotový web nebo výstupy předávám elektronicky.<br>
+            Termín dodání vždy domlouváme individuálně.</p>
+
+            <h3>6. Spolupráce z obou stran</h3>
+            <p>Aby vše proběhlo hladce, potřebuji od tebe:</p>
+            <ul>
+                <li>podklady (texty, obrázky apod.)</li>
+                <li>zpětnou vazbu</li>
+                <li>schválení návrhů</li>
+            </ul>
+            <p>Když se podklady nebo reakce zpozdí, může se posunout i termín dokončení.</p>
+
+            <h3>7. Odstoupení od smlouvy</h3>
+            <p>Objednatel nemá nárok na odstoupení od smlouvy po zahájení prací.<br>
+            Záloha je nevratná, pokud již byly práce zahájeny.</p>
+
+            <h3>8. Reklamace</h3>
+            <p>Pokud by něco nebylo v pořádku, dej mi vědět co nejdříve — ráda to opravím.</p>
+
+            <h3>9. Autorská práva</h3>
+            <p>Po zaplacení máš web plně k dispozici.<br>
+            Já si ho můžu ukázat ve svém portfoliu.</p>
+
+            <section id="legalGdprSection" class="legal-gdpr-section">
+                <h3>10. Ochrana osobních údajů (GDPR)</h3>
+
+                <h4>10.1 Kdo zpracovává údaje</h4>
+                <p>Andrea Zajícová<br>
+                IČ: 05359228<br>
+                Pouzdřanská 445, 691 25 Vranovice<br>
+                zaja.it@seznam.cz</p>
+
+                <h4>10.2 Jaké údaje potřebuji</h4>
+                <p>Pouze ty, které jsou nutné pro spolupráci:</p>
+                <ul>
+                    <li>jméno</li>
+                    <li>e-mail</li>
+                    <li>telefon</li>
+                    <li>fakturační údaje</li>
+                </ul>
+
+                <h4>10.3 Proč je používám</h4>
+                <ul>
+                    <li>abych s tebou mohla komunikovat</li>
+                    <li>abych mohla dodat službu</li>
+                    <li>kvůli fakturaci</li>
+                </ul>
+
+                <h4>10.4 Jak dlouho je uchovávám</h4>
+                <p>Jen po dobu nezbytně nutnou (např. dle zákona kvůli účetnictví).</p>
+
+                <h4>10.5 Tvoje práva</h4>
+                <p>Máš právo:</p>
+                <ul>
+                    <li>vědět, jaké údaje o tobě mám</li>
+                    <li>požádat o opravu nebo výmaz</li>
+                    <li>obrátit se na ÚOOÚ</li>
+                </ul>
+
+                <h4>10.6 Bezpečnost</h4>
+                <p>S údaji zacházím bezpečně a neposkytuji je nikomu, kdo je nepotřebuje.</p>
+            </section>
+
+            <h3>11. Závěr</h3>
+            <p>Tyto podmínky platí od: 1.1.2026</p>
+
+        </div>
+    </div>
+</div>
 
 
 <script>
@@ -1327,6 +1600,92 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
+});
+</script>
+
+    
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const legalModal = document.getElementById("legalModal");
+    const legalContent = legalModal.querySelector(".legal-modal-content");
+    const gdprSection = document.getElementById("legalGdprSection");
+    const gdprLink = document.getElementById("openGdpr");
+    const closeButton = legalModal.querySelector(".legal-modal-close");
+
+    let previousFocus = null;
+
+    function openLegalModal(showGdpr = false) {
+        previousFocus = document.activeElement;
+        legalModal.hidden = false;
+        document.body.classList.add("legal-modal-open");
+
+        legalContent.scrollTop = 0;
+
+        if (showGdpr) {
+            gdprSection.scrollIntoView({ block: "start", behavior: "instant" });
+        }
+
+        closeButton.focus();
+    }
+
+    function closeLegalModal() {
+        legalModal.hidden = true;
+        document.body.classList.remove("legal-modal-open");
+        if (previousFocus) previousFocus.focus();
+    }
+
+    if (gdprLink) {
+        gdprLink.addEventListener("click", function (event) {
+            event.preventDefault();
+            openLegalModal(true);
+        });
+    }
+
+    const legalLink = document.getElementById("openLegal");
+
+if (legalLink) {
+    legalLink.addEventListener("click", function (event) {
+        event.preventDefault();
+        openLegalModal(false);
+    });
+}
+
+    closeButton.addEventListener("click", closeLegalModal);
+
+    legalModal.addEventListener("click", function (event) {
+        if (event.target === legalModal) {
+            closeLegalModal();
+        }
+    });
+
+    document.addEventListener("keydown", function (event) {
+        if (legalModal.hidden) return;
+
+        if (event.key === "Escape") {
+            closeLegalModal();
+        }
+
+        if (event.key === "Tab") {
+            const focusable = Array.from(
+                legalModal.querySelectorAll(
+                    'button, a[href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+                )
+            ).filter(el => !el.disabled);
+
+            if (!focusable.length) return;
+
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+
+            if (event.shiftKey && document.activeElement === first) {
+                event.preventDefault();
+                last.focus();
+            } else if (!event.shiftKey && document.activeElement === last) {
+                event.preventDefault();
+                first.focus();
+            }
+        }
+    });
 });
 </script>
 
