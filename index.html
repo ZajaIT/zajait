@@ -52,11 +52,6 @@ html {
     position: relative;
     text-align: center;
 }
-
-
-
-
-
         header img {
             max-width: 300px;
             width: 100%;
@@ -367,19 +362,6 @@ html {
     color: #ff2fd6;
 }
 
-/* FB ikonka */
-.fb-icon {
-    color: white;
-    font-size: 1.2rem;
-    margin-right: 15px;
-    transition: 0.3s;
-}
-
-.fb-icon:hover {
-    color: #ff2fd6;
-    transform: scale(1.1);
-}
-
 /* Mobil */
 
 @media (max-width: 700px) {
@@ -402,7 +384,7 @@ html {
 /* ===== HAMBURGER MENU ===== */
 
 .hamburger {
-    display: none; /* na PC schovaný */
+    display: none; 
     font-size: 28px;
     background: none;
     border: none;
@@ -410,17 +392,15 @@ html {
     cursor: pointer;
 }
 
-/* PC menu */
 .menu {
     display: flex;
     margin-right: 40px;
 }
-
-/* Mobil */
+        
 @media (max-width: 800px) {
 
     .hamburger {
-        display: block; /* na mobilu vidět */
+        display: block; 
     }
 
     .menu {
@@ -484,8 +464,6 @@ html {
 
     z-index: 2000;
 }
-
-/* Telefon v hlavičce */
 
 .phone {
     color: white;
@@ -601,11 +579,6 @@ input[type="submit"] {
     transition: 0.3s;
 }
 
-/* Vyplněné pole = bílé */
-
-
-/* Autofill fix (Chrome) */
-
 input:-webkit-autofill,
 textarea:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 1000px white inset !important;
@@ -619,8 +592,6 @@ textarea:-webkit-autofill {
     margin: 40px auto 0 auto;
     text-align: center;
 }
-
-/* BOX s policky */
 
 .form-box {
     padding: 35px 30px;
@@ -655,8 +626,6 @@ textarea:-webkit-autofill {
     font-size: 1.1rem;
 }
 
-        /* Chybová hláška formuláře */
-
 .form-error {
     color: #ff2fd6;
     margin-bottom: 15px;
@@ -669,10 +638,6 @@ textarea:-webkit-autofill {
     border: 2px solid #ff2fd6 !important;
     box-shadow: 0 0 12px rgba(255,47,214,0.6);
 }
-/* Vyplněné pole */
-
-
-    /* ===== KONTAKTNÍ FORMULÁŘ – CLEAN ===== */
 
 .contact-form {
     max-width: 520px;
@@ -692,14 +657,12 @@ textarea:-webkit-autofill {
     backdrop-filter: blur(12px);
 }
 
-/* Field wrapper */
+
 
 .field {
     position: relative;
     margin-bottom: 22px;
 }
-
-/* Input / textarea */
 
 .contact-form .field input,
 .contact-form .field textarea {
@@ -713,16 +676,14 @@ textarea:-webkit-autofill {
     outline: none;
     transition: 0.25s;
 }
-
-/* Focus */
-
+        
 .contact-form .field input:focus,
 .contact-form .field textarea:focus {
     border-color: #ff2fd6;
     box-shadow: 0 0 10px rgba(255,47,214,0.5);
 }
 
-/* Filled = white */
+
 
 .contact-form .field input.filled,
 .contact-form .field textarea.filled {
@@ -731,15 +692,11 @@ textarea:-webkit-autofill {
     -webkit-text-fill-color: #111111;
 }
 
-/* Textarea */
-
 .contact-form textarea {
     resize: none;
     min-height: 120px;
     overflow: hidden;
 }
-
-/* Label */
 
 .contact-form .field label {
     position: absolute;
@@ -754,8 +711,6 @@ textarea:-webkit-autofill {
     padding: 0 6px;
 }
 
-/* Floating */
-
 .contact-form .field input:focus + label,
 .contact-form .field input:not(:placeholder-shown) + label,
 .contact-form .field textarea:focus + label,
@@ -767,24 +722,16 @@ textarea:-webkit-autofill {
     background: #000;
 }
 
-/* Autofill */
-
 .contact-form input:-webkit-autofill,
 .contact-form textarea:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 1000px white inset !important;
     -webkit-text-fill-color: #111 !important;
 }
 
-/* =============================
-   KONTAKT FORM – FINÁLNÍ OPRAVA
-   ============================= */
-
 .contact-form .field {
     position: relative;
     margin-bottom: 22px;
 }
-
-/* Input */
 
 .contact-form .field input,
 .contact-form .field textarea {
@@ -801,15 +748,11 @@ textarea:-webkit-autofill {
     transition: 0.25s;
 }
 
-/* Focus */
-
 .contact-form .field input:focus,
 .contact-form .field textarea:focus {
     border-color: #ff2fd6;
     box-shadow: 0 0 10px rgba(255,47,214,0.5);
 }
-
-/* Vyplněné = bílé pole + černý text */
 
 .contact-form .field input.filled,
 .contact-form .field textarea.filled {
@@ -817,8 +760,6 @@ textarea:-webkit-autofill {
     color: #111111 !important;
     -webkit-text-fill-color: #111111 !important;
 }
-
-/* Label */
 
 .contact-form .field label {
     position: absolute;
@@ -832,8 +773,6 @@ textarea:-webkit-autofill {
     pointer-events: none;
     transition: 0.25s ease;
 }
-
-/* Floating label */
 
 .contact-form .field input:focus + label,
 .contact-form .field input:not(:placeholder-shown) + label,
@@ -849,28 +788,22 @@ textarea:-webkit-autofill {
     padding: 0 6px;
 }
 
-/* Textarea */
-
 .contact-form textarea {
     resize: none;
     min-height: 120px;
     overflow: hidden;
 }
 
-/* Autofill */
-
 .contact-form input:-webkit-autofill,
 .contact-form textarea:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 1000px white inset !important;
     -webkit-text-fill-color: #111 !important;
 }
-    /* Textarea – label nahoře už v základu */
 
 .contact-form .field textarea + label {
     top: 18px;
     transform: none;
 }
-/* Textarea – floating label víc nahoru než input */
 
 .contact-form .field textarea:focus + label,
 .contact-form .field textarea:not(:placeholder-shown) + label {
@@ -878,7 +811,6 @@ textarea:-webkit-autofill {
     background: #000;
     padding: 0 6px;
 }
-/* ===== LOADING BUTTON ===== */
 
 .form-btn.loading {
     pointer-events: none;
@@ -899,15 +831,11 @@ textarea:-webkit-autofill {
     }
 }
 
-        /* Kurzor jako ručička na tlačítkách */
-
 button,
 .btn,
 input[type="submit"] {
     cursor: pointer;
 }
-
-/* MOBIL – telefon vlevo v top baru */
 
 @media (max-width: 800px) {
 
@@ -922,7 +850,7 @@ input[type="submit"] {
     }
 }
 
-/* POSUN OBSAHU DOLŮ NA MOBILU */
+
 @media (max-width: 800px) {
 
     header.top-header {
@@ -930,7 +858,7 @@ input[type="submit"] {
     }
 
 }
-        /* Mobil – menu víc k pravému okraji */
+
 @media (max-width: 800px) {
 
     .nav-right .menu {
@@ -955,10 +883,6 @@ input[type="submit"] {
      decoding="async">
 
     <div class="nav-right">
-
-        <a href="https://www.facebook.com/profile.php?id=61579571138823" class="fb-icon" target="_blank">
-        <i class="fa-brands fa-facebook-f"></i>
-    </a>
         
         <button class="hamburger" id="hamburger">☰</button>
 
@@ -1010,7 +934,7 @@ input[type="submit"] {
             <p>Správa a dlouhodobá technická podpora. Jsem tu pro Vás.</p>
         </div>
 
-    </div> <!-- KONEC services -->
+    </div> 
 
 
     <div class="services-detail reveal">
@@ -1167,10 +1091,6 @@ input[type="submit"] {
 
     </section>
 
-
-
-
-    <!-- PATIČKA -->
     <footer>
     <div class="footer-main">
         © 2026 ZajaIT<br>
@@ -1246,7 +1166,6 @@ document.addEventListener("DOMContentLoaded", function () {
         this.style.height = this.scrollHeight + "px";
     });
 
-   // ===== SUBMIT =====
 form.addEventListener("submit", function(e) {
     e.preventDefault();
 
@@ -1285,8 +1204,7 @@ if (!email.value.trim()) {
     errorBox.style.display = "block";
     return;
 }
-
-    // kontrola formátu emailu
+    
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 if (!emailPattern.test(email.value.trim())) {
@@ -1304,9 +1222,6 @@ if (!message.value.trim()) {
     errorBox.style.display = "block";
     return;
 }
-
-
-    // kontrola telefonu
     const phonePattern = /^[0-9+ ]{9,15}$/;
 
     if (!phonePattern.test(phone.value.trim())) {
@@ -1323,14 +1238,14 @@ if (!message.value.trim()) {
         return;
     }
 
-    // loading animace na tlačítku
+
 const submitBtn = form.querySelector('button[type="submit"]');
 
 submitBtn.classList.add("loading");
 submitBtn.textContent = "Odesílám…";
 submitBtn.disabled = true;
 
-    // odeslání
+
     const data = new FormData(form);
 
     fetch(form.action, {
@@ -1349,7 +1264,7 @@ submitBtn.disabled = true;
     })
     .catch(() => {
 
-    // vrátíme tlačítko zpět
+
     submitBtn.classList.remove("loading");
     submitBtn.textContent = "Odeslat";
     submitBtn.disabled = false;
@@ -1384,7 +1299,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const hamburger = document.getElementById("hamburger");
     const menu = document.getElementById("menu");
 
-    // Otevření / zavření menu
     hamburger.addEventListener("click", function (e) {
         e.stopPropagation();
 
@@ -1398,7 +1312,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Klik na položku menu = zavřít
     menu.querySelectorAll("a").forEach(link => {
         link.addEventListener("click", function () {
             menu.classList.remove("show");
@@ -1406,7 +1319,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Klik mimo menu = zavřít
     document.addEventListener("click", function (e) {
 
         if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
