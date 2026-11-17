@@ -195,6 +195,21 @@ html {
         grid-template-columns:1fr;
     }
 }
+        /* ===== SLUŽBY – TABLET ===== */
+
+@media (min-width: 701px) and (max-width: 900px) {
+
+    .services {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .services .service-box:last-child {
+        grid-column: 1 / -1;
+        width: calc(50% - 13px);
+        justify-self: center;
+    }
+
+}
 
         /* ---------- KONTAKT ---------- */
 
